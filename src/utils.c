@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structure.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 13:15:28 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/21 13:37:59 by cllovio          ###   ########.fr       */
+/*   Created: 2023/02/21 13:21:34 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/21 13:27:56 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURE_H
-#define STUCTURE_H
+#include "../header/push_swap.h"
 
-typedef struct s_ps {
-	char	*arg;
-}	t_ps;
-
-#endif
+void	init_structure(t_ps *ps)
+{
+	ps->arg = NULL;
+}

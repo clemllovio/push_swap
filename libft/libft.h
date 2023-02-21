@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:33:03 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/17 16:10:36 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:16:20 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@
 size_t	ft_strlen(const char *s);
 
 /*	ft_strjoin.c */
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char const *s2);
+
+/*	ft_strdup.c	*/
+char	*ft_strdup(const char *s1);
 
 /* ---- FT_PRINTF ---- */
 /* 	ft_check_args.c	*/
