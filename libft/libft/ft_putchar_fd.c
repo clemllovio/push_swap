@@ -1,39 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/25 11:35:00 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/17 16:40:56 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/16 14:14:12 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/22 18:32:37 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_printf(const char *format, ...)
+void	ft_putchar_fd(char c, int fd)
 {
-	va_list	args;
-	int		i;
-	int		count;
-
-	va_start(args, format);
-	i = 0;
-	count = 0;
-	while (format[i] && count != -1)
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			ft_check_args(format[i], args, &count);
-			if (!format[i])
-				break ;
-		}
-		else
-			ft_putchar(format[i], &count);
-		i++;
-	}
-	va_end(args);
-	return (count);
+	write(fd, &c, 1);
 }

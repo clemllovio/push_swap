@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 14:21:52 by cllovio           #+#    #+#             */
-/*   Updated: 2022/11/17 10:52:50 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/25 11:35:00 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/22 18:32:26 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_printf(const char *format, ...)
 {
-	int	i;
+	va_list	args;
+	int		i;
+	int		count;
 
-	if (!(s))
-		return ;
+	va_start(args, format);
 	i = 0;
-	while (s[i])
+	count = 0;
+	while (format[i] && count != -1)
 	{
-		ft_putchar_fd(s[i], fd);
+		if (format[i] == '%')
+		{
+			i++;
+			ft_check_args(format[i], args, &count);
+			if (!format[i])
+				break ;
+		}
+		else
+			ft_putchar(format[i], &count);
 		i++;
-	}	
+	}
+	va_end(args);
+	return (count);
 }

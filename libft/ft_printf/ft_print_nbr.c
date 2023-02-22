@@ -6,11 +6,11 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 14:05:21 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/17 16:40:43 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:32:22 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 void	ft_putnbr(int n, int *count)
 {

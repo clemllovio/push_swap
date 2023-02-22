@@ -6,11 +6,11 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:49:31 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 10:51:58 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:32:59 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static char	*ft_substr_b(char *s, unsigned int start, size_t len)
 {

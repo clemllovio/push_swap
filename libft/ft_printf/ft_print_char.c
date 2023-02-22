@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:52:56 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 08:46:18 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/24 14:04:58 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/22 18:32:19 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-char	*ft_strjoin(char *s1, char const *s2)
+void	ft_putchar(int c, int *count)
 {
-	int		i;
-	int		k;
-	char	*new_s;
+	if (*count != -1)
+	{
+		if (write(1, &c, 1) != -1)
+			*count = *count + 1;
+		else
+			*count = -1;
+	}
+}
 
-	i = -1;
-	k = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	new_s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!(new_s))
-		return (free(s1), NULL);
-	while (s1[++i])
+void	ft_putstr(char *s, int *count)
+{
+	int	i;
+	int	temp;
+
+	i = 0;
+	temp = 0;
+	if (!s)
 	{
-		new_s[k] = s1[i];
-		k++;
+		ft_putstr("(null)", count);
+		return ;
 	}
-	i = -1;
-	while (s2[++i])
+	while (s[i])
 	{
-		new_s[k] = s2[i];
-		k++;
+		ft_putchar(s[i], count);
+		i++;
 	}
-	new_s[k] = '\0';
-	free(s1);
-	return (new_s);
 }

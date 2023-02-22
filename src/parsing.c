@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:49:38 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 15:06:51 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:26:02 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,19 @@ int		convert_int(t_ps *ps)
 	int i;
 
 	ps->tab = ft_split(ps->arg, ' ');
+	if (!(ps->tab))
+		return (-1);
 	while(ps->tab[ps->nbr_line_tab])
 		ps->nbr_line_tab++;
-	free(ps->arg);
 	i = 0;
 	ps->tab_int = malloc(sizeof(int) * ps->nbr_line_tab);
+	if (!(ps->tab_int))
+		return (-1);
 	while (i < ps->nbr_line_tab)
 	{
 		ps->tab_int[i] = ft_atol(ps->tab[i]);
 		if (ps->tab_int[i] == 2147483648)
 			return (-1);
-		ft_printf("%d\n", ps->tab_int[i]);
 		i++;	
 	}
 	return (0);

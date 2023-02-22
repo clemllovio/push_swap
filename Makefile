@@ -1,47 +1,66 @@
-NAME = push_swap
+# ====================== VARIABLES ====================== #
 
-CFLAGS = -Wall -Werror -Wextra
+# ---- Final executable ---- #
+NAME		=	push_swap
 
-DIR_HEADERS = header/
-DIR_SRCS =	src/
-DIR_LIBFT = libft/
-DIR_OBJS = .obj/
-LIBFT = ${DIR_LIBFT}libft.a
+LIBFT		=	libft/libft.a
 
-HEADERS = ${DIR_HEADERS}push_swap.h \
-		${DIR_LIBFT}libft.h
+# ---- Directories ---- #
+DIR_HEADERS	=	header/
+DIR_SRCS 	=	src/
+DIR_LIBFT 	=	libft/
+DIR_OBJS 	=	.objs/
 
-SRCS	= ${DIR_SRCS}main.c \
-		$(DIR_SRCS)utils.c \
-		$(DIR_SRCS)parsing.c
+# ---- Files path ---- #
+HEADERS 	= 	${DIR_HEADERS}push_swap.h \
+				${DIR_LIBFT}libft.h
 
-OBJS	= ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
+SRCS		=	${DIR_SRCS}main.c \
+				$(DIR_SRCS)utils.c \
+				$(DIR_SRCS)parsing.c \
+				\
+				${DIR_SRCS}list/ft_lstadd_back.c\
+				${DIR_SRCS}list/ft_lstadd_front.c\
+				${DIR_SRCS}list/ft_lstclear.c\
+				${DIR_SRCS}list/ft_lstdelone.c\
+				${DIR_SRCS}list/ft_lstlast.c\
+				${DIR_SRCS}list/ft_lstnew.c\
+				${DIR_SRCS}list/ft_lstsize.c
+
+OBJS		=	${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
+
+# ---- Flag ---- #
+CFLAGS 		= 	-Wall -Werror -Wextra
+
+# ====================== RULES ====================== #
 
 .PHONY: all re clean fclean FORCE
 
-all:	${NAME}
+# ---- Compiled rules ---- #
+all:			${NAME}
 
 ${DIR_OBJS}%.o: %.c ${HEADERS} Makefile
-		@mkdir -p ${shell dirname $@}
-		${CC} ${CFLAGS} -c $< -o $@
+				@mkdir -p ${shell dirname $@}
+				${CC} ${CFLAGS} -c $< -o $@
 
-${NAME}: ${LIBFT} ${OBJS}
-		${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
+${NAME}: 		${LIBFT} ${OBJS}
+				${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
 
 ${DIR_OBJS}:
-		mkdir -p ${DIR_OBJS}
+				mkdir -p ${DIR_OBJS}
 
-${LIBFT}: FORCE
-	${MAKE} -C ${DIR_LIBFT}
+${LIBFT}: 		FORCE
+				${MAKE} -C ${DIR_LIBFT}
 
-clean :
-		make fclean -C ${DIR_LIBFT}
-		${RM} -rf ${DIR_OBJS}
+# ---- Usual rules --- #
+clean:
+				make fclean -C ${DIR_LIBFT}
+				${RM} -rf ${DIR_OBJS}
 
-fclean :	clean
-		${RM} ${NAME}
-		make fclean -C ${DIR_LIBFT}
+fclean:			clean
+				${RM} ${NAME}
+				make fclean -C ${DIR_LIBFT}
 
-re: fclean all
+re: 			fclean all
 
-FORCE :
+FORCE:

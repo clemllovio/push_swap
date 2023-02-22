@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structure.h                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 13:15:28 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 18:21:23 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/16 14:21:52 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/22 18:32:40 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURE_H
-#define STRUCTURE_H
+#include "../libft.h"
 
-typedef struct s_ps {
-	char	*arg;
-	char	**tab;
-	long int		*tab_int;
-	int		nbr_line_tab;
-}	t_ps;
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
-#endif
+	if (!(s))
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}	
+}

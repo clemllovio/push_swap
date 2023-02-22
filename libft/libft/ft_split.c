@@ -6,11 +6,11 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:26:17 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 10:48:10 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:32:43 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static int	ft_count_words(char *s, char c)
 {

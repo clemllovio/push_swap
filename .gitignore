@@ -1,2 +1,5 @@
 *.o
 Arktest_Push_Swap
+libft/libft.a 
+push_swap
+.DS_Store

@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 14:14:12 by cllovio           #+#    #+#             */
-/*   Updated: 2022/11/16 14:43:05 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/21 10:57:02 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/22 18:54:53 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../header/push_swap.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_lstsize(t_list *lst)
 {
-	write(fd, &c, 1);
+	int	len;
+
+	len = 0;
+	while (lst)
+	{
+		len++;
+		lst = lst -> next;
+	}
+	return (len);
 }

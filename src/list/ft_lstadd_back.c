@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 13:39:35 by cllovio           #+#    #+#             */
-/*   Updated: 2022/11/21 14:40:25 by cllovio          ###   ########.fr       */
+/*   Created: 2023/02/22 18:38:19 by cllovio           #+#    #+#             */
+/*   Updated: 2023/02/22 18:54:33 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../header/push_swap.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	unsigned int	i;
+	t_list	*last;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (new)
+	{
+		if (!(*lst))
+		{
+			*lst = new;
+			return ;
+		}
+		last = ft_lstlast(*lst);
+		last->next = new;
+	}
 }
