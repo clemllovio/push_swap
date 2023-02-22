@@ -1,42 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 15:52:56 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 08:46:18 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/16 14:14:12 by cllovio           #+#    #+#             */
+/*   Updated: 2022/11/16 14:43:05 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char const *s2)
+void	ft_putchar_fd(char c, int fd)
 {
-	int		i;
-	int		k;
-	char	*new_s;
-
-	i = -1;
-	k = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	new_s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!(new_s))
-		return (free(s1), NULL);
-	while (s1[++i])
-	{
-		new_s[k] = s1[i];
-		k++;
-	}
-	i = -1;
-	while (s2[++i])
-	{
-		new_s[k] = s2[i];
-		k++;
-	}
-	new_s[k] = '\0';
-	free(s1);
-	return (new_s);
+	write(fd, &c, 1);
 }

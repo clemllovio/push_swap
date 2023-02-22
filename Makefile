@@ -12,7 +12,8 @@ HEADERS = ${DIR_HEADERS}push_swap.h \
 		${DIR_LIBFT}libft.h
 
 SRCS	= ${DIR_SRCS}main.c \
-			$(DIR_SRCS)utils.c \
+		$(DIR_SRCS)utils.c \
+		$(DIR_SRCS)parsing.c
 
 OBJS	= ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
 

@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:23:24 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/21 14:10:20 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/22 13:39:27 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
 
 	i = 2;
 	if (ac < 2)
-		return(ft_printf("Error\nToo few arguments\n"), 0);
+		return(-1);
 	init_structure(&ps);
 	ps.arg = ft_strdup(av[1]);
 	if (!ps.arg)
@@ -27,14 +27,15 @@ int main(int ac, char **av)
 	while (i < ac)
 	{
 		ps.arg = ft_strjoin(ps.arg, " ");
-		if (!ps.arg)
-			return (free(ps.arg), -1);
+		if (ps.arg == NULL)
+			return (-1);
 		ps.arg = ft_strjoin(ps.arg, av[i]);
 		if (!ps.arg)
-			return (free(ps.arg), -1);
+			return (-1);
 		i++;
 	}
-	ft_printf("%s\n", ps.arg);
-	free(ps.arg);
+	if (check_error(&ps) == -1)
+		return (ft_putstr_fd("Error\n", 2), free(ps.arg), -1);
+	ft_free(ps.tab, ps.nbr_line_tab);
 	return(0);
 }

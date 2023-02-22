@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:33:03 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/21 14:16:20 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/22 14:01:32 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,22 @@ char	*ft_strjoin(char *s1, char const *s2);
 
 /*	ft_strdup.c	*/
 char	*ft_strdup(const char *s1);
+
+/*	ft_putchar_fd.c	*/
+void	ft_putchar_fd(char c, int fd);
+
+/*	ft_putstr_fd.c	*/
+void	ft_putstr_fd(char *s, int fd);
+
+/*	ft_split.c	*/
+void	*ft_free(char **tab, int j);
+char	**ft_split(char *s, char c);
+
+/*	ft_substr.c	*/
+char	*ft_substr(char *s, unsigned int start, size_t len);
+
+/*	ft_atoi.c	*/
+long int		ft_atol(char *str);
 
 /* ---- FT_PRINTF ---- */
 /* 	ft_check_args.c	*/

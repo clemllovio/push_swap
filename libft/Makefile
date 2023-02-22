@@ -10,7 +10,12 @@ SRCS = 	ft_check_args.c \
 		ft_printf.c \
 		ft_strjoin.c \
 		ft_strlen.c \
-		ft_strdup.c
+		ft_strdup.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_split.c \
+		ft_substr.c \
+		ft_atol.c
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
 
