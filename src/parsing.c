@@ -6,83 +6,97 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:49:38 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 18:26:02 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/23 15:17:03 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
 
-int	check_error(t_ps *ps)
+int	check_error(t_parsing *parsing)
 {
-	if (is_valid(ps) == -1)
-		return (-1);
-	if (convert_int(ps) == -1)
-		return (-1);
-	if (check_dupe(ps) == -1)
-		return	(-1);
-	return (0);	
-}
-
-int	is_valid(t_ps *ps)
-{
-	int i;
-	
-	i = 0;
-	while (ps->arg[i])
-	{
-		if ((ps->arg[i] >= '0' && ps->arg[i] <= '9') ||  ps->arg[i] == ' ')
-			i++;
-		else if (ps->arg[i] == '-' && (ps->arg[i + 1] >= '0' && \
-		ps->arg[i + 1] <= '9'))
-			i++;
-		else
-			return (-1);		
-	}
+	if (is_valid(parsing) == -1)
+		return (free(parsing->arg), -1);
+	else if (check_minus(parsing) == -1)
+		return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
+	else if (check_dupe(parsing) == -1)
+		return (free(parsing->tab_int), -1);
 	return (0);
 }
-
-int		convert_int(t_ps *ps)
-{
-	int i;
-
-	ps->tab = ft_split(ps->arg, ' ');
-	if (!(ps->tab))
-		return (-1);
-	while(ps->tab[ps->nbr_line_tab])
-		ps->nbr_line_tab++;
-	i = 0;
-	ps->tab_int = malloc(sizeof(int) * ps->nbr_line_tab);
-	if (!(ps->tab_int))
-		return (-1);
-	while (i < ps->nbr_line_tab)
-	{
-		ps->tab_int[i] = ft_atol(ps->tab[i]);
-		if (ps->tab_int[i] == 2147483648)
-			return (-1);
-		i++;	
-	}
-	return (0);
-}
-
-int	check_dupe(t_ps *ps)
+int	is_valid(t_parsing *parsing)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	while (i < ps->nbr_line_tab)
+	while (parsing->arg[i])
 	{
-		j = 0;
-		while (j < ps->nbr_line_tab)
+		if ((parsing->arg[i] >= '0' && parsing->arg[i] <= '9') || \
+		parsing->arg[i] == ' ')
+			i++;
+		else if (parsing->arg[i] == '-' && (parsing->arg[i + 1] >= '0' \
+		&& parsing->arg[i + 1] <= '9'))
 		{
-			if (i == j)
-				j++;
-			else if (ps->tab_int[i] == ps->tab_int[j])
-				return (-1);
-			else
-				j++;
+			i++;
+			parsing->nbr_minus++;
 		}
+		else
+			return (-1);
+	}
+	return (0);
+}
+
+int		check_minus(t_parsing *parsing)
+{
+	int	i;
+	
+	parsing->tab = ft_split(parsing->arg, ' ');
+	if (!(parsing->tab))
+		return (free(parsing->arg), -1);
+	while (parsing->tab[parsing->nbr_line_tab])
+		parsing->nbr_line_tab++;
+	free(parsing->arg);
+	i = 0;
+	while (parsing->tab[i])
+	{
+		if (parsing->tab[i][0] == '-')
+			parsing->nbr_minus--;
 		i++;
 	}
+	if (parsing->nbr_minus > 0)
+		return(-1);
+	return (0);
+}
+
+int		check_dupe(t_parsing *parsing)
+{
+	int	i;
+	// int	j;
+	
+	parsing->tab_int = malloc(sizeof(int) * parsing->nbr_line_tab);
+	if (!(parsing->tab_int))
+		return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
+	i = 0;
+	while (i < parsing->nbr_line_tab)
+	{
+		parsing->tab_int[i] = ft_atol(parsing->tab[i]);
+		if (parsing->tab_int[i] == 2147483648)
+			return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
+		i++;
+	}
+	ft_free(parsing->tab, parsing->nbr_line_tab);
+	// i = 0;
+	// while (i < parsing->nbr_line_tab)
+	// {
+	// 	j = 0;
+	// 	while (j < parsing->nbr_line_tab)
+	// 	{
+	// 		if (i == j)
+	// 			j++;
+	// 		else if (parsing->tab_int[i] == parsing->tab_int[j])
+	// 			return (-1);
+	// 		else
+	// 			j++;
+	// 	}
+	// 	i++;
+	// }
 	return (0);
 }

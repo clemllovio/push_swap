@@ -19,18 +19,18 @@ SRCS		=	${DIR_SRCS}main.c \
 				$(DIR_SRCS)utils.c \
 				$(DIR_SRCS)parsing.c \
 				\
-				${DIR_SRCS}list/ft_lstadd_back.c\
-				${DIR_SRCS}list/ft_lstadd_front.c\
-				${DIR_SRCS}list/ft_lstclear.c\
-				${DIR_SRCS}list/ft_lstdelone.c\
-				${DIR_SRCS}list/ft_lstlast.c\
-				${DIR_SRCS}list/ft_lstnew.c\
-				${DIR_SRCS}list/ft_lstsize.c
+				# ${DIR_SRCS}list/ft_lstadd_back.c\
+				# ${DIR_SRCS}list/ft_lstadd_front.c\
+				# ${DIR_SRCS}list/ft_lstclear.c\
+				# ${DIR_SRCS}list/ft_lstdelone.c\
+				# ${DIR_SRCS}list/ft_lstlast.c\
+				# ${DIR_SRCS}list/ft_lstnew.c\
+				# ${DIR_SRCS}list/ft_lstsize.c
 
 OBJS		=	${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
 
 # ---- Flag ---- #
-CFLAGS 		= 	-Wall -Werror -Wextra
+CFLAGS 		= 	-Wall -Wextra
 
 # ====================== RULES ====================== #
 

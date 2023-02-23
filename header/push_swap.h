@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:42 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 18:56:20 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/23 15:05:22 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,16 @@
 # include "structure.h"
 
 /* ---- utils.c ----*/
-void	init_structure(t_ps *ps);
+void	init_structure(t_parsing *parsing);
 
 /* ---- parsing.c ----*/
-int		check_error(t_ps *ps);
-int		is_valid(t_ps *ps);
-int		convert_int(t_ps *ps);
-int		check_dupe(t_ps *ps);
+int		check_error(t_parsing *parsing);
+int		is_valid(t_parsing *parsing);
+int		convert_int(t_parsing *parsing);
+int		check_dupe(t_parsing *parsing);
+int		check_minus(t_parsing *parsing);
 
 /* ---- LIST ---- */
-
-typedef struct s_list {
-	int				content;
-	struct s_list	*next;
-	int				index;
-}	t_list;
 
 /*	ft_lstadd_back.c	*/
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -50,9 +45,12 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list	*ft_lstlast(t_list *lst);
 
 /*	ft_lstnew.c	*/
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(int	content);
 
 /*	ft_lstsize.c	*/
 int	ft_lstsize(t_list *lst);
+
+/*	create_lst.c	*/
+t_list	*create_list(t_parsing *parsing);
 
 #endif
