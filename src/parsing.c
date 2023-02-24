@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:49:38 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/23 15:17:03 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 10:58:16 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,26 @@
 int	check_error(t_parsing *parsing)
 {
 	if (is_valid(parsing) == -1)
-		return (free(parsing->arg), -1);
+	{
+		free(parsing->arg);
+		return (-1);
+	}
 	else if (check_minus(parsing) == -1)
-		return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
+	{
+		free(parsing->arg);
+		return (-1);
+	}
 	else if (check_dupe(parsing) == -1)
-		return (free(parsing->tab_int), -1);
+	{
+		free(parsing->arg);
+		ft_free(parsing->tab, parsing->nbr_line_tab);
+		return (-1);
+	}
+	free(parsing->arg);
+	ft_free(parsing->tab, parsing->nbr_line_tab);
 	return (0);
 }
+
 int	is_valid(t_parsing *parsing)
 {
 	int	i;
@@ -46,57 +59,55 @@ int	is_valid(t_parsing *parsing)
 
 int		check_minus(t_parsing *parsing)
 {
-	int	i;
-	
+	int i;
+
 	parsing->tab = ft_split(parsing->arg, ' ');
 	if (!(parsing->tab))
-		return (free(parsing->arg), -1);
-	while (parsing->tab[parsing->nbr_line_tab])
+		return (-1);
+	while(parsing->tab[parsing->nbr_line_tab])
 		parsing->nbr_line_tab++;
-	free(parsing->arg);
 	i = 0;
-	while (parsing->tab[i])
+	while (i < parsing->nbr_line_tab)
 	{
 		if (parsing->tab[i][0] == '-')
 			parsing->nbr_minus--;
 		i++;
 	}
 	if (parsing->nbr_minus > 0)
-		return(-1);
+		return(ft_free(parsing->tab, parsing->nbr_line_tab), -1);
 	return (0);
 }
 
-int		check_dupe(t_parsing *parsing)
-{
+int	check_dupe(t_parsing *parsing)
+{	
 	int	i;
-	// int	j;
-	
+	int	j;
+
+	i = 0;
 	parsing->tab_int = malloc(sizeof(int) * parsing->nbr_line_tab);
 	if (!(parsing->tab_int))
-		return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
-	i = 0;
+		return (-1);
 	while (i < parsing->nbr_line_tab)
 	{
 		parsing->tab_int[i] = ft_atol(parsing->tab[i]);
 		if (parsing->tab_int[i] == 2147483648)
-			return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
+			return (free(parsing->tab_int), -1);
+		i++;	
+	}
+	i = 0;
+	while (i < parsing->nbr_line_tab)
+	{
+		j = 0;
+		while (j < parsing->nbr_line_tab)
+		{
+			if (i == j)
+				j++;
+			else if (parsing->tab_int[i] == parsing->tab_int[j])
+				return (free(parsing->tab_int), -1);
+			else
+				j++;
+		}
 		i++;
 	}
-	ft_free(parsing->tab, parsing->nbr_line_tab);
-	// i = 0;
-	// while (i < parsing->nbr_line_tab)
-	// {
-	// 	j = 0;
-	// 	while (j < parsing->nbr_line_tab)
-	// 	{
-	// 		if (i == j)
-	// 			j++;
-	// 		else if (parsing->tab_int[i] == parsing->tab_int[j])
-	// 			return (-1);
-	// 		else
-	// 			j++;
-	// 	}
-	// 	i++;
-	// }
 	return (0);
 }

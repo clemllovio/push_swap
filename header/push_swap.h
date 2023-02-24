@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:42 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/23 15:05:22 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 11:08:02 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	init_structure(t_parsing *parsing);
 /* ---- parsing.c ----*/
 int		check_error(t_parsing *parsing);
 int		is_valid(t_parsing *parsing);
-int		convert_int(t_parsing *parsing);
-int		check_dupe(t_parsing *parsing);
+// int		convert_int(t_parsing *parsing);
 int		check_minus(t_parsing *parsing);
+int		check_dupe(t_parsing *parsing);
 
 /* ---- LIST ---- */
 
@@ -51,6 +51,6 @@ t_list	*ft_lstnew(int	content);
 int	ft_lstsize(t_list *lst);
 
 /*	create_lst.c	*/
-t_list	*create_list(t_parsing *parsing);
+t_list	*create_list(t_parsing *parsing, t_list **a);
 
 #endif
