@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:49:38 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/24 10:58:16 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:49:42 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int	is_valid(t_parsing *parsing)
 	return (0);
 }
 
-int		check_minus(t_parsing *parsing)
+int	check_minus(t_parsing *parsing)
 {
-	int i;
+	int	i;
 
 	parsing->tab = ft_split(parsing->arg, ' ');
 	if (!(parsing->tab))
 		return (-1);
-	while(parsing->tab[parsing->nbr_line_tab])
+	while (parsing->tab[parsing->nbr_line_tab])
 		parsing->nbr_line_tab++;
 	i = 0;
 	while (i < parsing->nbr_line_tab)
@@ -74,7 +74,7 @@ int		check_minus(t_parsing *parsing)
 		i++;
 	}
 	if (parsing->nbr_minus > 0)
-		return(ft_free(parsing->tab, parsing->nbr_line_tab), -1);
+		return (ft_free(parsing->tab, parsing->nbr_line_tab), -1);
 	return (0);
 }
 
@@ -92,7 +92,7 @@ int	check_dupe(t_parsing *parsing)
 		parsing->tab_int[i] = ft_atol(parsing->tab[i]);
 		if (parsing->tab_int[i] == 2147483648)
 			return (free(parsing->tab_int), -1);
-		i++;	
+		i++;
 	}
 	i = 0;
 	while (i < parsing->nbr_line_tab)

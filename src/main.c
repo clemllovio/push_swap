@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:23:24 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/24 11:08:44 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:41:54 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_parsing	parsing;
+	t_list		*a;
 	int			i;
 
 	i = 2;
@@ -36,7 +37,8 @@ int	main(int ac, char **av)
 	}
 	if (check_error(&parsing) == -1)
 		return (ft_putstr_fd("Error\n", 2), -1);
-	create_list(&parsing);
-	free(parsing.tab_int);
+	a = create_list(&parsing);
+	print_list(a);
+	ft_lstclear(a);
 	return (0);
 }

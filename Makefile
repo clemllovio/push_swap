@@ -18,19 +18,21 @@ HEADERS 	= 	${DIR_HEADERS}push_swap.h \
 SRCS		=	${DIR_SRCS}main.c \
 				$(DIR_SRCS)utils.c \
 				$(DIR_SRCS)parsing.c \
-				\
-				# ${DIR_SRCS}list/ft_lstadd_back.c\
+				${DIR_SRCS}list/ft_lstnew.c\
+				${DIR_SRCS}list/print_lst.c\
+				${DIR_SRCS}list/create_list.c\
+				${DIR_SRCS}list/ft_lstadd_back.c\
+				${DIR_SRCS}list/ft_lstlast.c\
+				${DIR_SRCS}list/ft_lstclear.c\
+				# ${DIR_SRCS}list/ft_lstsize.c\
 				# ${DIR_SRCS}list/ft_lstadd_front.c\
-				# ${DIR_SRCS}list/ft_lstclear.c\
 				# ${DIR_SRCS}list/ft_lstdelone.c\
-				# ${DIR_SRCS}list/ft_lstlast.c\
-				# ${DIR_SRCS}list/ft_lstnew.c\
-				# ${DIR_SRCS}list/ft_lstsize.c
+
 
 OBJS		=	${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
 
 # ---- Flag ---- #
-CFLAGS 		= 	-Wall -Wextra
+CFLAGS 		= 	-Wall -Werror -Wextra
 
 # ====================== RULES ====================== #
 
@@ -40,7 +42,7 @@ CFLAGS 		= 	-Wall -Wextra
 all:			${NAME}
 
 ${DIR_OBJS}%.o: %.c ${HEADERS} Makefile
-				@mkdir -p ${shell dirname $@}
+				@ mkdir -p ${shell dirname $@}
 				${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: 		${LIBFT} ${OBJS}

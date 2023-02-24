@@ -6,20 +6,21 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:36:12 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/23 13:59:41 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:41:17 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-t_list	*ft_lstnew(int	content)
+t_list	*ft_lstnew(int content, int index)
 {
-	t_list	*tab;
+	t_list	*cell;
 
-	tab = malloc(sizeof(t_list));
-	if (!(tab))
+	cell = malloc(sizeof(t_list));
+	if (!(cell))
 		return (NULL);
-	tab -> content = content;
-	tab -> next = NULL;
-	return (tab);
+	cell->content = content;
+	cell->index = index;
+	cell->next = NULL;
+	return (cell);
 }

@@ -6,22 +6,20 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:14:34 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 18:54:41 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 14:48:38 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list *lst)
 {
 	t_list	*temp;
 
-	if (!lst || !del)
-		return ;
-	while ((*lst))
+	while (lst)
 	{
-		temp = *lst;
-		*lst = (*lst)->next;
-		ft_lstdelone(temp, del);
+		temp = lst->next;
+		free(lst);
+		lst = temp;
 	}
 }

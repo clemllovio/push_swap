@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:15:28 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/24 11:06:43 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/24 15:08:30 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_list {
 	int				content;
-	struct s_list	*next;
 	int				index;
+	struct s_list	*next;
 }	t_list;
 
 typedef struct s_parsing {
