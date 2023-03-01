@@ -1,13 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 13:21:34 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/01 15:09:26 by cllovio          ###   ########.fr       */
+/*   Created: 2023/02/28 09:31:09 by cllovio           #+#    #+#             */
+/*   Updated: 2023/03/01 10:47:52 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header/push_swap.h"
+#include "../../header/push_swap.h"
+
+void	sort_list(t_list *a, t_parsing	*parsing)
+{
+	radix(a, parsing);
+}

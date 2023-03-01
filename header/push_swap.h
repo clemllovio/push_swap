@@ -6,30 +6,27 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:42 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/24 15:14:26 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/01 15:09:55 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-/* ---- LIBRAIRIE ---- */
+/* ------------------------ LIBRAIRIE ------------------------ */
 # include "../libft/libft.h"
 # include "structure.h"
 
-/* ---- utils.c ----*/
-void	init_structure(t_parsing *parsing);
-
-/* ---- parsing.c ----*/
+/* ---------- parsing.c -----------*/
 int		check_error(t_parsing *parsing);
 int		is_valid(t_parsing *parsing);
 int		check_minus(t_parsing *parsing);
 int		check_dupe(t_parsing *parsing);
+int		create_tab_int(t_parsing *parsing);
 
-/* ---- LIST ---- */
-
+/* ------------------------ LIST ------------------------------- */
 /*	ft_lstadd_back.c	*/
-void	ft_lstadd_back(t_list *a, int content, int index);
+void	ft_lstadd_back(t_list *a, int content);
 
 /*	ft_lstadd_front.c	*/
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -44,14 +41,31 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 t_list	*ft_lstlast(t_list *lst);
 
 /*	ft_lstnew.c	*/
-t_list	*ft_lstnew(int	content, int index);
+t_list	*ft_lstnew(int	content);
 
 /*	ft_lstsize.c	*/
 int	ft_lstsize(t_list *lst);
 
 /*	create_lst.c	*/
 t_list	*create_list(t_parsing *parsing);
+void	get_index(t_list *a, t_parsing *parsing);
 
+/*	print_lst.c	*/
 void	print_list(t_list	*a);
+
+/* ------------------------ SORT ------------------------------- */
+/*	sort.c	*/
+void	sort_list(t_list *a, t_parsing *parsing);
+
+/*	sorting_instruction.c*/
+void	push_a(t_list *a, t_list *b);
+void	push_b(t_list *a, t_list *b);
+void	reverse_a(t_list *a);
+
+/*	radix.c	*/
+int		get_max(t_list *a);
+void	add_zero(int max);
+void	counting_sort(t_list *a, t_parsing	*parsing);
+void	radix(t_list *a, t_parsing	*parsing);
 
 #endif

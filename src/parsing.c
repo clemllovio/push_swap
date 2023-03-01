@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 08:49:38 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/24 15:49:42 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/02/28 10:41:26 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_error(t_parsing *parsing)
 		free(parsing->arg);
 		return (-1);
 	}
-	else if (check_dupe(parsing) == -1)
+	else if (create_tab_int(parsing) == -1)
 	{
 		free(parsing->arg);
 		ft_free(parsing->tab, parsing->nbr_line_tab);
@@ -78,10 +78,9 @@ int	check_minus(t_parsing *parsing)
 	return (0);
 }
 
-int	check_dupe(t_parsing *parsing)
+int	create_tab_int(t_parsing *parsing)
 {	
 	int	i;
-	int	j;
 
 	i = 0;
 	parsing->tab_int = malloc(sizeof(int) * parsing->nbr_line_tab);
@@ -94,6 +93,16 @@ int	check_dupe(t_parsing *parsing)
 			return (free(parsing->tab_int), -1);
 		i++;
 	}
+	if (check_dupe(parsing) == -1)
+		return (-1);
+	return (0);
+}
+
+int	check_dupe(t_parsing *parsing)
+{
+	int	i;
+	int	j;
+
 	i = 0;
 	while (i < parsing->nbr_line_tab)
 	{
