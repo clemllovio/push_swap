@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lst.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 13:35:47 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/02 14:57:26 by cllovio          ###   ########.fr       */
+/*   Created: 2022/11/21 10:56:18 by cllovio           #+#    #+#             */
+/*   Updated: 2022/11/22 09:16:54 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/push_swap.h"
+#include "libft.h"
 
-void	print_list(t_list	*a)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	while (a)
-	{
-		ft_printf("%d i : %d\n", a->content, a->index);
-		a = a->next;
-	}
+	new -> next = *lst;
+	*lst = new;
 }

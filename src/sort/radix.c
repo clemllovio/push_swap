@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:57:04 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/01 14:05:23 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:47:01 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	get_max(t_list *a)
 
 void	add_zero(int max)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (max > 0)
@@ -42,14 +42,14 @@ void	add_zero(int max)
 	ft_printf("nbr unite : %d\n", i);
 }
 
-void	counting_sort(t_list *a, t_parsing	*parsing)
+void	counting_sort(t_list **a, t_parsing	*parsing)
 {
 	int	max;
 	int	*count;
 	int	i;
-	
+
 	i = 0;
-	max = get_max(a);
+	max = get_max(*a);
 	ft_printf("max : %d\n", max);
 	add_zero(max);
 	count = malloc(sizeof(int) * parsing->nbr_line_tab);
@@ -62,8 +62,12 @@ void	counting_sort(t_list *a, t_parsing	*parsing)
 	}
 }
 
-void	radix(t_list *a, t_parsing	*parsing)
+void	radix(t_list *a, t_list *b, t_parsing *parsing)
 {
-	get_index(a, parsing);
-	counting_sort(a, parsing);
+	counting_sort(&a, parsing);
+	ft_printf("a : \n");
+	print_list(a);
+	ft_printf("\n");
+	ft_printf("b: \n");
+	print_list(b);
 }

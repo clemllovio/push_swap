@@ -26,7 +26,7 @@ SRCS		=	${DIR_SRCS}main.c \
 				${DIR_SRCS}list/ft_lstclear.c\
 				${DIR_SRCS}sort/sort.c \
 				${DIR_SRCS}sort/radix.c \
-				# ${DIR_SRCS}sort/sorting_instruction.c\
+				${DIR_SRCS}sort/sorting_instruction.c\
 				# ${DIR_SRCS}list/ft_lstsize.c\
 				# ${DIR_SRCS}list/ft_lstadd_front.c\
 				# ${DIR_SRCS}list/ft_lstdelone.c\

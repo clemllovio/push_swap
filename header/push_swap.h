@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:42 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/01 15:09:55 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:39:13 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,18 @@ void	print_list(t_list	*a);
 
 /* ------------------------ SORT ------------------------------- */
 /*	sort.c	*/
-void	sort_list(t_list *a, t_parsing *parsing);
+void	sort_list(t_list *a,  t_list *b, t_parsing *parsing);
 
 /*	sorting_instruction.c*/
-void	push_a(t_list *a, t_list *b);
-void	push_b(t_list *a, t_list *b);
-void	reverse_a(t_list *a);
+void	push(t_list **from, t_list **to);
+void	push_a(t_list **a, t_list **b);
+void	push_b(t_list **a, t_list **b);
+void	rotate(t_list **lst, char *name);
 
 /*	radix.c	*/
 int		get_max(t_list *a);
 void	add_zero(int max);
-void	counting_sort(t_list *a, t_parsing	*parsing);
-void	radix(t_list *a, t_parsing	*parsing);
+void	counting_sort(t_list **a, t_parsing	*parsing);
+void	radix(t_list *a, t_list *b, t_parsing*parsing);
 
 #endif
