@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:42 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/02 16:39:13 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:40:26 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	sort_list(t_list *a,  t_list *b, t_parsing *parsing);
 void	push(t_list **from, t_list **to);
 void	push_a(t_list **a, t_list **b);
 void	push_b(t_list **a, t_list **b);
-void	rotate(t_list **lst, char *name);
+void	rotate(t_list **lst, char	*instruction);
+void	swap(t_list **lst, char	*instruction);
 
 /*	radix.c	*/
 int		get_max(t_list *a);

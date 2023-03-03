@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:00:48 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/02 16:41:54 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/03 09:34:54 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_list	*create_list(t_parsing *parsing)
 		ft_lstadd_back(a, parsing->tab_int[i]);
 		i++;
 	}
+	get_index(a, parsing);
 	return (a);
 }
 

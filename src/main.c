@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:23:24 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/02 14:55:24 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:49:08 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ int	main(int ac, char **av)
 	if (check_error(&parsing) == -1)
 		return (ft_putstr_fd("Error\n", 2), -1);
 	a = create_list(&parsing);
+	ft_printf("before sorting :\n");
+	print_list(a);
 	sort_list(a, b, &parsing);
+	ft_printf("\n\nafter sorting :\n");
+	print_list(a);
+	ft_printf("b: \n");
+	print_list(b);
 	ft_lstclear(a);
 	return (0);
 }
