@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:23:24 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/03 15:49:08 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/06 13:57:31 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,42 @@ int	main(int ac, char **av)
 	if (check_error(&parsing) == -1)
 		return (ft_putstr_fd("Error\n", 2), -1);
 	a = create_list(&parsing);
-	ft_printf("before sorting :\n");
-	print_list(a);
-	sort_list(a, b, &parsing);
-	ft_printf("\n\nafter sorting :\n");
-	print_list(a);
-	ft_printf("b: \n");
-	print_list(b);
+	final_print(a, b, &parsing);
 	ft_lstclear(a);
+	return (0);
+}
+
+void	final_print(t_list *a, t_list *b, t_parsing *parsing)
+{
+	ft_printf("---- BEFORE SORTING ----\n");
+	ft_printf("STACK_A : \n");
+	print_list(a);
+	ft_printf("\nSTACK_B : \n");
+	print_list(b);
+	ft_printf("\n---- INSTRUCTION ----\n");
+	// while (is_sorted(a) != 0)
+	// {
+	// 	sort_list(&a, parsing);
+	// }
+	reverse_rotate(&a, parsing, "rra");
+	ft_printf("\n---- AFTER SORTING ----\n\n");
+	ft_printf("STACK_A : \n");
+	print_list(a);
+	ft_printf("\nSTACK_B : \n");
+	print_list(b);
+}
+
+int is_sorted(t_list *a)
+{
+	t_list	*copy;
+
+	copy = a;
+	while (copy && copy->next)
+	{
+		if (copy->index > copy->next->index)
+			return (-1);
+		copy = copy->next;
+	}
+	ft_printf("it's sorted");
 	return (0);
 }

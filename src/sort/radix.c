@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:57:04 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/03 15:36:33 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/06 09:48:18 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,7 @@ void	counting_sort(t_list **a, t_parsing	*parsing)
 	}
 }
 
-void	radix(t_list *a, t_list *b, t_parsing *parsing)
-{
-	counting_sort(&a, parsing);
-	ft_printf("a : \n");
-	print_list(a);
-	ft_printf("\n");
-	ft_printf("b: \n");
-	print_list(b);
-}
+// void	radix(t_list *a, t_list *b, t_parsing *parsing)
+// {
+// 	counting_sort(&a, parsing);
+// }

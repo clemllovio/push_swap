@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:42 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/03 15:40:26 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/06 13:58:03 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 /* ------------------------ LIBRAIRIE ------------------------ */
 # include "../libft/libft.h"
 # include "structure.h"
+
+void	final_print(t_list *a, t_list *b, t_parsing *parsing);
+int		is_sorted(t_list *a);
 
 /* ---------- parsing.c -----------*/
 int		check_error(t_parsing *parsing);
@@ -55,7 +58,9 @@ void	print_list(t_list	*a);
 
 /* ------------------------ SORT ------------------------------- */
 /*	sort.c	*/
-void	sort_list(t_list *a,  t_list *b, t_parsing *parsing);
+void	sort_two(t_list **a);
+void	sort_three(t_list **a);
+void	sort_list(t_list **a, t_parsing *parsing);
 
 /*	sorting_instruction.c*/
 void	push(t_list **from, t_list **to);
@@ -63,6 +68,7 @@ void	push_a(t_list **a, t_list **b);
 void	push_b(t_list **a, t_list **b);
 void	rotate(t_list **lst, char	*instruction);
 void	swap(t_list **lst, char	*instruction);
+void	reverse_rotate(t_list	**lst, t_parsing *parsing, char *instruction);
 
 /*	radix.c	*/
 int		get_max(t_list *a);
