@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:23:24 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/06 13:57:31 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/08 16:27:43 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	main(int ac, char **av)
 	a = create_list(&parsing);
 	final_print(a, b, &parsing);
 	ft_lstclear(a);
+	ft_lstclear(b);
 	return (0);
 }
 
@@ -75,11 +76,10 @@ void	final_print(t_list *a, t_list *b, t_parsing *parsing)
 	ft_printf("\nSTACK_B : \n");
 	print_list(b);
 	ft_printf("\n---- INSTRUCTION ----\n");
-	// while (is_sorted(a) != 0)
-	// {
-	// 	sort_list(&a, parsing);
-	// }
-	reverse_rotate(&a, parsing, "rra");
+	if (is_sorted(&a) != 0)
+	{
+		sort_list(&a, &b, parsing);
+	}
 	ft_printf("\n---- AFTER SORTING ----\n\n");
 	ft_printf("STACK_A : \n");
 	print_list(a);
@@ -87,11 +87,11 @@ void	final_print(t_list *a, t_list *b, t_parsing *parsing)
 	print_list(b);
 }
 
-int is_sorted(t_list *a)
+int is_sorted(t_list **a)
 {
 	t_list	*copy;
 
-	copy = a;
+	copy = (*a);
 	while (copy && copy->next)
 	{
 		if (copy->index > copy->next->index)

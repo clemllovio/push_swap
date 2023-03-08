@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:04:50 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/06 14:35:59 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/08 10:29:11 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,18 @@ void	rotate(t_list **lst, char *instruction)
 	ft_printf("%s\n", instruction);
 }
 
-void	reverse_rotate(t_list	**lst, t_parsing *parsing, char *instruction)
+void	reverse_rotate(t_list	**lst, char *instruction)
 {
 	t_list	*temp;
 	t_list	*last;
-	
+
 	temp = (*lst);
-	last = ft_lstlast(*lst);
-	if (parsing->nbr_line_tab == 3)
-		temp->next->next = NULL;
-	else
-	{
-		while (temp->next->next!= NULL)
-			temp = temp->next;
-		temp->next->next = NULL;
-	}
-	last->next = temp;
-	(*lst) = last;
+	while (temp->next->next)
+		temp = temp->next;
+	last = temp->next;
+	temp->next = NULL;
+	last->next = *lst;
+	*lst = last;
 	ft_printf("%s\n", instruction);
 }
 

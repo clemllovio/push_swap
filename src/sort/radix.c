@@ -6,63 +6,61 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 10:57:04 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/06 09:48:18 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/08 16:11:30 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-int	get_max(t_list *a)
+int	get_max(t_list **a)
 {
 	int	max;
+	t_list	*temp;
 
-	max = a->content;
-	while (a)
+	temp = (*a);
+	max = temp->index;
+	while (temp)
 	{
-		if (max < a->content)
-			max = a->content;
-		a = a->next;
+		if (max < temp->index)
+			max = temp->index;
+		temp = temp->next;
 	}
 	return (max);
 }
 
-void	add_zero(int max)
+int	add_zero(int max)
 {
 	int	i;
 
-	i = 0;
-	while (max > 0)
-	{
-		max = max / 10;
-		if (i == 0)
-			i++;
-		else
-			i = i * 10;
-	}
-	ft_printf("nbr unite : %d\n", i);
+	i = 1;
+	while (max >> i)
+		i++;
+	return (i);
 }
 
-void	counting_sort(t_list **a, t_parsing	*parsing)
+void	radix(t_list **a, t_list **b)
 {
 	int	max;
-	int	*count;
+	int	nbr_shift;
+	int	shift;
 	int	i;
 
-	i = 0;
-	max = get_max(*a);
-	ft_printf("max : %d\n", max);
-	add_zero(max);
-	count = malloc(sizeof(int) * parsing->nbr_line_tab);
-	if (!(count))
-		return ;
-	while (i < parsing->nbr_line_tab)
+	max = get_max(a);
+	nbr_shift = add_zero(max);
+	shift = 0;
+	while (shift < nbr_shift)
 	{
-		count[i] = 0;
-		i++;
+		i = 0;
+		while (i <= max)
+		{
+			if (((*a)->index >> shift) % 2 == 0)
+				push_b(a, b);
+			else
+				rotate(a, "ra");
+			i++;
+		}
+		while ((*b))
+			push_a(a, b);
+		shift++;
 	}
 }
-
-// void	radix(t_list *a, t_list *b, t_parsing *parsing)
-// {
-// 	counting_sort(&a, parsing);
-// }
