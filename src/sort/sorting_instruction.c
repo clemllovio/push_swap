@@ -6,25 +6,13 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 15:04:50 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/08 10:29:11 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/09 09:50:04 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-void	push_a(t_list **a, t_list **b)
-{
-	push(b, a);
-	ft_printf("pa\n");
-}
-
-void	push_b(t_list **a, t_list **b)
-{
-	push(a, b);
-	ft_printf("pb\n");
-}
-
-void	push(t_list **from, t_list **to)
+void	push(t_list **from, t_list **to, char *instruction)
 {
 	t_list	*temp;
 
@@ -32,6 +20,7 @@ void	push(t_list **from, t_list **to)
 	(*from) = (*from)->next;
 	temp->next = (*to);
 	(*to) = temp;
+	ft_printf("%s\n", instruction);
 }
 
 void	rotate(t_list **lst, char *instruction)

@@ -6,12 +6,12 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 13:15:28 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/24 15:08:30 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/09 09:48:45 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURE_H
-#define STRUCTURE_H
+# define STRUCTURE_H
 
 typedef struct s_list {
 	int				content;

@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 11:26:17 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 18:32:43 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/09 09:32:03 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static int	ft_count_words(char *s, char c)
 	{
 		is_valid = 0;
 		while (s[i] && s[i] == c)
-		i++;
+			i++;
 		while (s[i] && s[i] != c)
 		{
 			is_valid = 1;
 			i++;
 		}
 		if ((s[i] == c || s[i] == 0) && is_valid)
-		nb_words++;
+			nb_words++;
 	}
 	return (nb_words);
 }

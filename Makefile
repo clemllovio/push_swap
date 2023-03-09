@@ -18,18 +18,13 @@ HEADERS 	= 	${DIR_HEADERS}push_swap.h \
 SRCS		=	${DIR_SRCS}main.c \
 				$(DIR_SRCS)parsing.c \
 				${DIR_SRCS}list/ft_lstnew.c\
-				${DIR_SRCS}list/print_lst.c\
 				${DIR_SRCS}list/create_list.c\
 				${DIR_SRCS}list/ft_lstadd_back.c\
 				${DIR_SRCS}list/ft_lstlast.c\
 				${DIR_SRCS}list/ft_lstclear.c\
 				${DIR_SRCS}sort/sort.c \
 				${DIR_SRCS}sort/radix.c \
-				${DIR_SRCS}sort/sorting_instruction.c\
-				${DIR_SRCS}list/ft_lstadd_front_bonus.c\
-				# ${DIR_SRCS}list/ft_lstsize.c\
-				# ${DIR_SRCS}list/ft_lstdelone.c\
-
+				${DIR_SRCS}sort/sorting_instruction.c
 
 OBJS		=	${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
 

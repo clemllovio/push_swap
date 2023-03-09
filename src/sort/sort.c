@@ -6,19 +6,19 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:31:09 by cllovio           #+#    #+#             */
-/*   Updated: 2023/03/08 16:22:16 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/09 11:09:44 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../header/push_swap.h"
 
-void	sort_two(t_list **a)
+static void	sort_two(t_list **a)
 {
 	if ((*a)->index > (*a)->next->index)
 		swap(a, "sa");
 }
 
-void	sort_three(t_list **lst)
+static void	sort_three(t_list **lst)
 {
 	int	a;
 	int	b;
@@ -45,11 +45,11 @@ void	sort_three(t_list **lst)
 	}
 }
 
-void	sort_four(t_list **a, t_list **b)
+static void	sort_four(t_list **a, t_list **b)
 {
-	push_b(a, b);
+	push(a, b, "pb");
 	sort_three(a);
-	push_a(a, b);
+	push(b, a, "pa");
 	if ((*a)->index == 1)
 		swap(a, "sa");
 	else if ((*a)->index == 2)
@@ -63,7 +63,7 @@ void	sort_four(t_list **a, t_list **b)
 		rotate(a, "ra");
 }
 
-void	sort_five(t_list **a, t_list **b)
+static void	sort_five(t_list **a, t_list **b)
 {
 	int	i;
 
@@ -72,7 +72,7 @@ void	sort_five(t_list **a, t_list **b)
 	{
 		if ((*a)->index == 0 || (*a)->index == 1)
 		{
-			push_b(a, b);
+			push(a, b, "pb");
 			i++;
 		}
 		else
@@ -81,8 +81,8 @@ void	sort_five(t_list **a, t_list **b)
 	sort_three(a);
 	if ((*b)->index < (*b)->next->index)
 		swap(b, "sb");
-	push_a(a, b);
-	push_a(a, b);
+	push(b, a, "pa");
+	push(b, a, "pa");
 }
 
 void	sort_list(t_list **a, t_list **b, t_parsing	*parsing)

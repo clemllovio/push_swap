@@ -6,7 +6,7 @@
 /*   By: cllovio <cllovio@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 14:42:01 by cllovio           #+#    #+#             */
-/*   Updated: 2023/02/22 18:32:31 by cllovio          ###   ########.fr       */
+/*   Updated: 2023/03/09 09:33:52 by cllovio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static long int	check_overflow(long int nbr)
 		return (2147483648);
 	return (nbr);
 }
+
 long int	ft_atol(char *str)
 {
 	int			i;
@@ -39,7 +40,6 @@ long int	ft_atol(char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		
 		if (result != (result * 10 + (str[i] - 48)) / 10)
 			return (2147483648);
 		result = result * 10 + (str[i] - 48);
