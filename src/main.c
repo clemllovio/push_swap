@@ -21,22 +21,29 @@ static void	init_structure(t_parsing *parsing)
 	parsing->nbr_minus = 0;
 }
 
-static int	create_str_arg(int i, char *str, t_parsing *parsing)
+static int	create_str_arg(char **av, int ac, t_parsing *parsing)
 {
-	if (i == 1)
+	int	i;
+
+	i = 1;
+	while (i < ac)
 	{
-		parsing->arg = ft_strdup(str);
-		if (!(parsing->arg))
-			return (-1);
-	}
-	else
-	{
-		parsing->arg = ft_strjoin(parsing->arg, " ");
-		if (!(parsing->arg))
-			return (-1);
-		parsing->arg = ft_strjoin(parsing->arg, str);
-		if (!(parsing->arg))
-			return (-1);
+		if (i == 1)
+		{
+			parsing->arg = ft_strdup(av[i]);
+			if (!(parsing->arg))
+				return (-1);
+		}
+		else
+		{
+			parsing->arg = ft_strjoin(parsing->arg, " ");
+			if (!(parsing->arg))
+				return (-1);
+			parsing->arg = ft_strjoin(parsing->arg, av[i]);
+			if (!(parsing->arg))
+				return (-1);
+		}
+		i++;
 	}
 	return (0);
 }
@@ -60,19 +67,14 @@ int	main(int ac, char **av)
 	t_parsing	parsing;
 	t_list		*a;
 	t_list		*b;
-	int			i;
 
-	i = 1;
 	b = NULL;
 	if (ac < 2)
 		return (-1);
 	init_structure(&parsing);
-	while (i < ac)
-	{
-		if (create_str_arg(i, av[i], &parsing) == -1)
-			return (-1);
-		i++;
-	}
+	if (create_str_arg(av, ac, &parsing) == -1)
+		return (-1);
+	ft_printf("%s\n", parsing.arg);
 	if (check_error(&parsing) == -1)
 		return (ft_putstr_fd("Error\n", 2), -1);
 	a = create_list(&parsing);
